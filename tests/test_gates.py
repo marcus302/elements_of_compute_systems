@@ -62,3 +62,12 @@ def test_full_adder():
     assert full_adder(True, False, True) == (False, True)
     assert full_adder(True, True, False) == (False, True)
     assert full_adder(True, True, True) == (True, True)
+
+
+def test_data_flip_flop():
+    dff = DLatch()
+
+    dff(True, False) == True
+    dff(False, False) == True
+    dff(False, True) == False
+    dff(True, False) == False

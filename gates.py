@@ -44,6 +44,10 @@ def org(a: bool, b: bool):
     return nandg(notg(a), notg(b))
 
 
+def norg(a: bool, b: bool):
+    return notg(org(a, b))
+
+
 def xorg(a: bool, b: bool):
     """
     A | B | Output
@@ -107,3 +111,17 @@ def full_adder(a: bool, b: bool, c: bool) -> tuple[bool, bool]:
     carry_out = org(carry_1, carry_2)
 
     return sum_2, carry_out
+
+
+class DLatch:
+    def __init__(self):
+        self.nor_2_output = False
+
+    def __call__(self, data: bool, store: bool) -> bool:
+        and_1 = andg(data, store)
+        and_2 = andg(notg(data), store)
+        nor_1 = norg(and_1, self.nor_2_output)
+        nor_2 = norg(and_2, nor_1)
+        self.nor_2_output = nor_2
+
+        return nor_2
