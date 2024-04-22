@@ -45,3 +45,20 @@ def test_demultiplexor():
     assert demultiplexor(False, False) == (False, False)
     assert demultiplexor(True, True) == (False, True)
     assert demultiplexor(False, True) == (False, False)
+
+
+def test_half_adder():
+    assert half_adder(True, True) == (False, True)
+    assert half_adder(True, False) == (True, False)
+    assert half_adder(False, False) == (False, False)
+
+
+def test_full_adder():
+    assert full_adder(False, False, False) == (False, False)
+    assert full_adder(False, False, True) == (True, False)
+    assert full_adder(False, True, False) == (True, False)
+    assert full_adder(False, True, True) == (False, True)
+    assert full_adder(True, False, False) == (True, False)
+    assert full_adder(True, False, True) == (False, True)
+    assert full_adder(True, True, False) == (False, True)
+    assert full_adder(True, True, True) == (True, True)
